@@ -81,6 +81,7 @@ function loadPlaylist() {
     });
   } else {
     player.loadPlaylist(ids);
+    player.setPlaybackQuality(large);
   }
 }
 
