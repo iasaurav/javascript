@@ -1,5 +1,4 @@
-const link =
-"https://docs.google.com/spreadsheets/d/1nMOSo-1YmviPyhOo_Vw9dx9v4cPqRpXdHeEcaBiS2H4/gviz/tq?tqx=out:json&gid="+app;
+const link ="https://docs.google.com/spreadsheets/d/1nMOSo-1YmviPyhOo_Vw9dx9v4cPqRpXdHeEcaBiS2H4/gviz/tq?tqx=out:json&gid="+app;
 
 let videos = [];
 let currentStartIndex = 0;
