@@ -1,4 +1,4 @@
-
+<script>
   
   
 
@@ -129,7 +129,7 @@ ${v(3) ? ` | <span class="copy" onclick="copyText('${v(3)}')">${v(3)}</span>` : 
   
 
 
- 
+ </script>
 
 
 
