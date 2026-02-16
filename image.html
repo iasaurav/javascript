@@ -1,0 +1,81 @@
+<style>
+.round-img {
+  width: 200px;
+  height: 200px;
+}
+
+</style>
+
+
+
+
+
+<script>
+
+  
+  
+
+  function copyText(t) {
+    navigator.clipboard.writeText(t);
+  }
+
+document.addEventListener("DOMContentLoaded", () => {
+const [id, gid] = prompt("password i hai").trim().split(':');
+ 
+          
+    const base = r => `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:json&tq&gid=${gid}&range=${r}`;
+
+  
+    
+ const tables = [ 
+
+
+
+
+{
+        
+        id: "drive",
+        range: "A2:Z20",
+        headers: ['', ''],
+        row: c => {
+          const v = i => c[i]?.f || c[i]?.v || '';
+          return `${v(6)
+  ? `<a href="https://drive.google.com/uc?export=download&id=${v(4)}"target="_blank"
+onclick="copyText('${v(1)}')"><img src="https://lh3.googleusercontent.com/d/${v(6).split("/d/")[1].split("/")[0]}"class="round-img"></a>&nbsp;&nbsp;`
+  : ``
+}
+`;
+        }
+      }
+
+
+
+
+
+
+
+
+
+];
+
+// Auto-create containers and fetch data
+    tables.forEach(({id,range,headers,row }) => {
+      const container = document.createElement("div");
+      container.id = id;
+      container.textContent = "Loading...";
+      document.body.appendChild(container);
+
+      fetch(base(range))
+        .then(r => r.text())
+        .then(d => {
+          const rows = JSON.parse(d.slice(47, -2)).table.rows;
+          let html = `</br></br><table><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>`;
+          rows.forEach(r => html += row(r.c));
+          container.innerHTML = html + '</table></br>';
+        });
+    });
+  });
+
+
+
+</script>
